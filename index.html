@@ -46,7 +46,7 @@
         <section data-transition="fade-in fade-out"
            data-background-size="78%" data-background="img/webrtc-logo-vert-retro-dist.svg"
            style="color: black; margin-top: -60px; margin-left: -20px;">
-          <h3 style="color: black">WebRTC - Audio - Firefox</h3>
+          <h3 style="color: black">What is WebRTC</h3>
           <p style="text-align: left; margin-left: 370px"><small>
             Haakon Sporsheim<br/><br/>
             <img src="img/github.png" class="plain" style="margin: 0px 0px; padding-right: 4px; height: 24px"/>
@@ -63,89 +63,49 @@
           <!--</ul>-->
         <!--</section>-->
         <section data-transition="fade-in">
-          <h3>Components</h3>
+          <h3>VoIP and video conferencing</h3>
+          <h4 class="fragment"> ... for the web</h4>
+        </section>
+        <section>
+          <h3>Javascript</h3>
           <ul>
-            <li>Capture (Microhone), Playback (Speaker)</li>
-            <li>Audio encoding/decoding (OPUS)</li>
-            <li>Acoustic Echo Cancellation (AEC)</li>
-            <li>Audio filtering:</li>
-            <ul>
-              <li>Automatic Gain Control (AGC)</li>
-              <li>Keyboard click/typing detection</li>
-              <li>Noise supression</li>
-              <li>Comfort Noise Generation</li>
-            </ul>
+            <li class="fragment">RTCPeerConnection</li>
+            <li class="fragment">.getUserMedia</li>
+            <li class="fragment">MediaStream</li>
+            <li class="fragment">(RTC)DataChannel</li>
           </ul>
         </section>
         <section>
-          <h3>Acoustic Echo Cancellation (I)</h3>
+          <h3>Peer to peer</h3>
           <ul>
-            <li>Not echo supression!</li>
-            <li>Echo is audible ~50ms delay</li>
-            <li>Echo is annoying ~100-200ms delay</li>
-            <li>Developed as early as 1960s</li>
-            <li>Digital signal processing</li>
+            <li class="fragment">Interactive Connectivity Establishment (ICE)</li>
           </ul>
         </section>
         <section>
-          <h3>Acoustic Echo Cancellation (II)</h3>
-          <img src="img/aec.png" />
+          <img src="img/webrtc-overview.jpg" />
         </section>
         <section>
-          <h3>Audio device control in Firefox</h3>
+          <h3>Media - Audio/Video</h3>
           <ul>
-            <li>Capture handled by webrtc.org code!</li>
-            <li>Playback handled by libcubeb</li>
+            <li class="fragment">OPUS ... PCMA/PCMU</li>
+            <li class="fragment">VP8, VP9 ... H.264 (H.264UC)</li>
           </ul>
         </section>
         <section>
-          <h3>AEC improvements to Firefox</h3>
+          <h3>Security</h3>
           <ul>
-            <li>Capture and playback handled by libcubeb</li>
-            <li>New DA-AEC (from webrtc.org / Google)</li>
+            <li class="fragment">Yes! ... "end to end encryption"</li>
+            <li class="fragment">DTLS-SRTP and/or DTLS-SCTP</li>
           </ul>
         </section>
         <section>
-          <h3>libcubeb</h3>
-          <ul>
-            <li><a href="https://github.com/kinetiknz/cubeb">github.com/kinetiknz/cubeb</a></li>
-            <li>Hardware and platform abstraction library</li>
-            <li>C and C++, but exposes a simple C API</li>
-          </ul>
-          <pre class="fragment"><code data-trim class="language-c">
-cubeb *ctx = NULL;
-cubeb_stream *stream = NULL;
-cubeb_stream_params params;
-
-cubeb_init(&ctx, "Cubeb audio test");
-
-params.format = CUBEB_SAMPLE_S16NE;
-params.rate = 44100;
-params.channels = 2;
-cubeb_stream_init(ctx, &stream, "test tone", params,
-    100, data_cb, state_cb, user_data);
-cubeb_stream_start(stream);
-...
-cubeb_stream_stop(stream);
-          </code></pre>
+          <img src="img/webrtc-protocols.png" />
         </section>
         <section>
-          <h3>libcubeb - OS X (I)</h3>
+          <h3>Mobile/Native Apps ?</h3>
           <ul>
-            <li>CoreAudio / AudioUnit</li>
-            <li>AUHAL component(s)</li>
+            <li class="fragment">Yes! Although you probably wouldn't use Javascript</li>
           </ul>
-          <br/>
-          <img src="img/auhal.gif" />
-        </section>
-        <section>
-          <h3>libcubeb - OS X (II)</h3>
-          <ul>
-            <li>Native sample rate only for capture</li>
-            <li>Bluetooth headset and MacBook built-in mic</li>
-          </ul>
-          <br/>
-          <img src="img/osx_audio.png" class="fragment" />
         </section>
         <section>
           <h3>Thanks!</h3>
